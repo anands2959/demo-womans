@@ -1,0 +1,85 @@
+.product-section {
+  padding-bottom: 8rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+}
+
+.section-header .section-title {
+  margin-bottom: 0;
+  flex: none;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.filter-tabs span {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+}
+
+.filter-tabs span:hover,
+.filter-tabs span.active {
+  color: var(--text-main);
+  border-bottom-color: var(--accent-main);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem 2rem;
+}
+
+.view-all-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  
+  .filter-tabs {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    gap: 1.5rem;
+  }
+  
+  .filter-tabs span {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

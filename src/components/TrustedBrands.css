@@ -1,0 +1,103 @@
+.trusted-brands {
+  padding: 3rem 0 5rem 0; /* Significantly reduced height */
+  text-align: center;
+}
+
+.brands-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.brands-title::before, .brands-title::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--border-light);
+}
+
+.brands-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  opacity: 0.5;
+  filter: grayscale(1);
+  transition: all 0.5s ease;
+}
+
+.brands-grid:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.brand-logo {
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Specific styling to mimic actual logos */
+.vogue {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.elle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  line-height: 1;
+}
+
+.bazaar {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.cosmo {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.marie {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+@media (max-width: 1024px) {
+  .brands-grid {
+    justify-content: center;
+    gap: 3rem 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-logo {
+    font-size: 1.2rem !important;
+  }
+}
