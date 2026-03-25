@@ -97,6 +97,15 @@
   transform: scale(1.1);
 }
 
+.btn-wishlist.active {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.heart-icon-svg.filled {
+  fill: currentColor;
+}
+
 .product-info {
   display: flex;
   flex-direction: column;

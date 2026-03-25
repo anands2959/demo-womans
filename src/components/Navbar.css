@@ -133,6 +133,29 @@
   transform: translateY(-2px);
 }
 
+.wishlist-icon-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.icon-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--accent-main);
+  color: #fff;
+  font-size: 0.6rem;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  padding-left: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border: 1.5px solid #fff;
+}
+
 @media (max-width: 1100px) {
   .navbar-links {
     gap: 1.5rem;
