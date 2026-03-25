@@ -8,6 +8,7 @@ import { useWishlist } from '@/context/WishlistContext';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { wishlist } = useWishlist();
 
   useEffect(() => {
@@ -20,9 +21,16 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar fade-in ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar fade-in ${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="container navbar-inner">
         <div className="nav-left">
+          <button 
+            className="menu-toggle" 
+            aria-label="Toggle Menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
           <Link href="/" className="navbar-logo">
             Women&apos;s
           </Link>
@@ -50,7 +58,7 @@ const Navbar = () => {
           </div>
           
           <div className="navbar-icons">
-            <Link href="/wishlist" aria-label="Favorites" className="icon-btn mobile-hide wishlist-icon-link">
+            <Link href="/wishlist" aria-label="Favorites" className="icon-btn wishlist-icon-link">
               <HeartIcon />
               {wishlist.length > 0 && <span className="icon-badge">{wishlist.length}</span>}
             </Link>
@@ -58,6 +66,16 @@ const Navbar = () => {
             <button aria-label="Shopping Bag" className="icon-btn"><BagIcon /></button>
           </div>
         </div>
+      </div>
+
+      {/* Mobile Menu Drawer */}
+      <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}>
+        <ul className="mobile-menu-links">
+          <li><Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
+          <li><Link href="/shop" onClick={() => setIsMenuOpen(false)}>Shop</Link></li>
+          <li><Link href="#" onClick={() => setIsMenuOpen(false)}>Blog</Link></li>
+          <li><Link href="#" onClick={() => setIsMenuOpen(false)}>Account</Link></li>
+        </ul>
       </div>
     </nav>
   );
@@ -84,6 +102,18 @@ const UserIcon = () => (
 const BagIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
+  </svg>
+);
+
+const MenuIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
   </svg>
 );
 

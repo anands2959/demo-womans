@@ -106,14 +106,24 @@
 }
 
 @media (max-width: 1024px) {
+  .top-products {
+    padding: 4rem 0;
+  }
+
+  .top-products .section-header {
+    margin-bottom: 2.5rem;
+  }
+
   .top-products-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem 2rem;
+    gap: 2rem 1.2rem;
   }
 }
 
 @media (max-width: 580px) {
   .top-products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+    padding: 0 1.2rem;
   }
 }
