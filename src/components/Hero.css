@@ -25,7 +25,14 @@
 .hero-slide.active {
   opacity: 1;
   visibility: visible;
-  z-index: 2; /* Always on top when active */
+  z-index: 3; /* New slide on top */
+}
+
+.hero-slide.prev {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2; /* Outgoing slide stays briefly */
+  transition: opacity 1.5s ease-in-out;
 }
 
 .hero-slide-bg {
@@ -36,13 +43,12 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  transition: transform 2s ease;
-  transform: scale(1.1);
   z-index: 0;
 }
 
-.hero-slide.active .hero-slide-bg {
-  transform: scale(1);
+/* Maintain animation for both active and prev to avoid "jumps" */
+.hero-slide.active .hero-slide-bg,
+.hero-slide.prev .hero-slide-bg {
   animation: kenBurns 15s linear infinite alternate;
 }
 
