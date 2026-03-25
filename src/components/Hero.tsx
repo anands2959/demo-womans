@@ -14,7 +14,7 @@ const slides = [
   },
   {
     id: 2,
-    image: '/assets/hero_bg.png',
+    image: '/assets/hero_4.png',
     title: 'Modern\nElegance',
     subtitle: 'Discover our curated selection of timeless pieces that define sophistication and effortless grace.',
     cta: 'Discover More'
