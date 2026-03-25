@@ -64,10 +64,11 @@
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--text-muted);
+  color: var(--text-main);
   transition: var(--transition);
   position: relative;
-  font-weight: 600;
+  font-weight: 700; 
+  text-shadow: 0 0 10px rgba(255, 252, 251, 0.2); 
 }
 
 .navbar-links a:hover {
@@ -106,7 +107,7 @@
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-muted);
+  color: var(--text-main); 
   pointer-events: none;
 }
 
