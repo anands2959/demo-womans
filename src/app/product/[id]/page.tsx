@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { products } from '@/data/products';
 import Link from 'next/link';
+import { useWishlist } from '@/context/WishlistContext';
 import './product.css';
 
 const StarIcon = ({ filled }: { filled: boolean }) => (
@@ -36,6 +37,9 @@ export default function ProductDetailsPage() {
   const product = products.find(p => p.id === Number(id));
   const [selectedSize, setSelectedSize] = useState('M');
   const [selectedColor, setSelectedColor] = useState('Rosy');
+  const { wishlist, toggleWishlist } = useWishlist();
+
+  const isInWishlist = product ? wishlist.some(item => item.id === product.id) : false;
 
   if (!product) {
     return (
@@ -125,8 +129,12 @@ export default function ProductDetailsPage() {
 
           <div className="details-actions">
             <button className="btn btn-primary btn-lg add-cart-btn">Add to Bag</button>
-            <button className="btn-wishlist-large">
-              <HeartIcon /> Wishlist
+            <button 
+              className={`btn-wishlist-round ${isInWishlist ? 'active' : ''}`}
+              onClick={() => product && toggleWishlist(product)}
+              aria-label={isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+            >
+              <HeartIcon filled={isInWishlist} />
             </button>
           </div>
 
@@ -189,8 +197,8 @@ export default function ProductDetailsPage() {
   );
 }
 
-const HeartIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.82-8.82 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+const HeartIcon = ({ filled }: { filled?: boolean }) => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={`heart-icon-svg ${filled ? 'filled' : ''}`}>
+    <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
   </svg>
 );
